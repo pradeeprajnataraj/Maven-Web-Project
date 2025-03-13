@@ -22,7 +22,16 @@
 	 	<sonar.host.url>https://sonarcloud.io/</sonar.host.url>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
+<distributionManagement>
+     <snapshotRepository>
+        <id>nexus-snapshots</id>
+        <url>http://localhost:8081/repository/mvn-snapshot/</url>
+    </snapshotRepository>
+    <repository>
+        <id>nexus-releases</id>
+        <url>http://localhost:8081/repository/mvn-releases/</url>
+    </repository>
+</distributionManagement
      	
   </properties>
 	
