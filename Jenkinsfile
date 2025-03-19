@@ -7,6 +7,8 @@ node {
     stage('build') {
         bat 'mvn package'
     }
-
+       stage('build') {
+        bat 'mvn sonar:sonar -Dsonar.projectKey=guest -Dsonar.host.url=http://localhost:9000 -Dsonar.login=17d0c0b50a0e416b8728c0ba5944169adaa37655'
+    }
 }
   
