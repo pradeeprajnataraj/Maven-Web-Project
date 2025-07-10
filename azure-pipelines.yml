@@ -9,7 +9,7 @@ trigger:
 pool:
   name: ubuntu-agentpool
   demands:
-    - agent.name -equals vm-ubuntu-vm
+    - agent.name -equals newvm
 
 steps:
 - task: Maven@3
