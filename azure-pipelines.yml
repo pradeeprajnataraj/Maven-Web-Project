@@ -22,3 +22,14 @@ steps:
       df -h
       whoami
       mvn --version
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'                 # Path to your pom.xml (relative to repo root)
+    goals: 'clean install'                  # Maven goals/commands
+    options: '-X'                           # (Optional) Add debug flags or profiles
+    publishJUnitResults: true               # (Optional) useful for test reporting
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'  # Default test result pattern
+    javaHomeOption: 'JDKVersion'            # Use predefined JDKs
+    jdkVersionOption: '1.11'                # Choose version, adjust as per your setup
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
