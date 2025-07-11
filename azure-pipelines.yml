@@ -7,9 +7,9 @@ trigger:
 - master
 
 pool:
-  name: ubuntu-agentpool
+  name: Default
   demands:
-    - agent.name -equals newvm
+    - agent.name -equals vm-ubuntu
 
 steps:
 - task: CmdLine@2
