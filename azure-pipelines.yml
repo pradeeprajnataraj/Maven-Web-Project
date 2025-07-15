@@ -28,3 +28,9 @@ steps:
       echo "Running Maven build"
       mvn clean package
 
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo "Running Maven build"
+      mvn deploy      
+
