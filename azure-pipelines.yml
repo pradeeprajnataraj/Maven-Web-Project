@@ -9,7 +9,7 @@ trigger:
 pool:
   name: Default
   demands:
-    - agent.name -equals vm-ubuntu
+    - agent.name -equals vm-selfhost
 
 steps:
 - task: CmdLine@2
