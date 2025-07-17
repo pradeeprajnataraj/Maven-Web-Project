@@ -1,36 +1,37 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
 - master
 
 pool:
   name: Default
   demands:
-    - agent.name -equals selfhosted_agentpool
+    - agent.name -equals vm-docker
 
 steps:
+
+# Step 1: Verify environment
 - task: CmdLine@2
+  displayName: 'Verify Agent Environment'
   inputs:
     script: |
       echo "Running on agent: $(Agent.Name)"
       echo "Current directory: $(Build.SourcesDirectory)"
-      echo "Hello from Linux shell!"
       uname -a
       df -h
       whoami
       mvn --version
+
+# Step 2: Build the Maven project (pom.xml should exist)
 - task: CmdLine@2
+  displayName: 'Maven Clean Package'
   inputs:
     script: |
       echo "Running Maven build"
-      mvn clean package
+      mvn clean package -s ~/.m2/settings.xml
 
+# Step 3: Deploy to Azure Artifacts
 - task: CmdLine@2
+  displayName: 'Maven Deploy to Azure Artifacts'
   inputs:
     script: |
-      echo "Running Maven build"
-      mvn deploy      
-
+      echo "Deploying to Azure Artifacts Feed"
+      mvn deploy -s ~/.m2/settings.xml
