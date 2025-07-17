@@ -26,7 +26,7 @@ steps:
   inputs:
     script: |
       echo "Running Maven build"
-      mvn clean package -s ~/.m2/settings.xml
+      mvn clean package
 
 # Step 3: Deploy to Azure Artifacts
 - task: CmdLine@2
@@ -34,4 +34,4 @@ steps:
   inputs:
     script: |
       echo "Deploying to Azure Artifacts Feed"
-      mvn deploy -s ~/.m2/settings.xml
+      mvn deploy
